@@ -41,3 +41,5 @@ f.elements[5].click();// клик по элементу
 x=f.elements.lang[0]// первый русский
 x.checked=true// появиться флажок
 x.defaultChecked// true либо false по умолчанию
+//  img модуль 2
+// table

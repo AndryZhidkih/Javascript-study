@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Поиск узлов в дереве документа</title>
+<style type="text/css">
+html{
+	background:#f93;
+	cursor:default;
+}
+html, input, button{
+	font:16px calibri, sans-serif;
+}
+div{
+	margin:0 0 20px;
+	padding:20px;border:5px solid #ffc;
+}
+p{
+	margin:10px 0;
+	background:#fff;
+	padding:10px;
+}
+</style>
+<script type="text/javascript">
+function f(){
+	var i=document.createElement("em");
+	i.appendChild(document.createTextNode("Наклонный "));
+	var p=document.createElement("strong");
+	p.appendChild(document.createTextNode("жирный "));
+	var t=document.createTextNode("текст");
+	var br=document.createElement("br");
+	var f=document.createDocumentFragment();// создаем фрагмент
+	// и помещаем туда все созданые элементы
+	f.appendChild(i);
+	f.appendChild(p);
+	f.appendChild(t);
+	f.appendChild(br);
+	var d=document.getElementsByTagName("div");// записываем строки в дивы перед первым ребенком
+	for(var i=0;i<d.length; i++)
+		d[i].insertBefore(f.cloneNode(true),  d[i].firstChild);
+}
+/*
+	function f() {
+		 var a=document.links[0];
+		 a.parenNode// результат p
+		 a.parenNode.parenNode// результат div
+		 var d= a.parenNode.parenNode;
+		 d.childNodes.lengs// длина 7 ,пробелы считаються узлами
+		 var p=d.childNodes[3];// Получаем то что нужно
+		 p.firstChild// a
+		 // как получить текст из a
+		  p.firstChild.firstChild// получаем текстовый узелы
+		  p.firstChild.firstChild.nodeМalue// получаем сам текст из узла
+		   p.firstChild.firstChild.nextSibling// сосед а (b)
+		   p.firstChild.firstChild.nextSibling.firstChild.nodeValue// кликабельный
+		   a.textContent// выбирает тексты из узлов на любой глубине
+		   // Как получить следующий соседний элемент
+		   var x=d.nextSibling; 
+		   while(x && x.nodeType!=1){ 
+		   x=x.nextSibling;}// получаем именно элемент
+		 }
+		 */
+
+</script>
+</head>
+<body>
+<div class="d">
+	<p>Первый параграф</p>
+	<p class="clickable"><a href="javascript:f();">Второй <b>кликабельный</b> параграф</a></p>
+	<p>Третий параграф</p>
+</div>
+<div>
+	<p>Четвертый параграф</p>
+	<p>Пятый параграф</p>
+</div>
+<p>Шестой параграф</p>
+<p>Седьмой и последний параграф</p>
+</body>
+</html>

@@ -10,27 +10,19 @@
 		/*
 		** Коллекция ссылок
 		*/
-		var links = new Object();
+		var links =new Object();
 		links["Яндекс"] = "http://www.yandex.ru";
 		links["Рамблер"] = "http://www.rambler.ru";
 		links["Гугл"] = "http://www.google.ru";
+
+		function goToURL(){
+			var s=document.myForm.selURL;
+			var url=s.options[s.selectedIndex].value;
+			location.assign(url);//Запускает урл страницы
+		}
 		
 		// Создадим в списке SELECT элементы OPTION
-		var s = document.myForm.selURL;
-		for (var linkName in links){
-			var o = new Option();
-			o.value = links[linkName];
-			o.text = linkName;
-			/* или 
-				var o = new Option(linkName, links[linkName]); 
-			*/
-			s.add(newOption);
-		}
-		// Сделаем все элементы формы доступными
-		var f = document.myForm; // или s.form
-		for (var i=0; i < f.elements.length; i++){
-			f.elements[i].disabled = false;
-		}
+
 		
 	</script>
 </head>
@@ -44,7 +36,28 @@
 	</form>
 	
 	<script type="text/javascript">
-		
+		var s = document.myForm.selURL;
+		for (var linkName in links){
+			var o = new Option();
+			o.value = links[linkName];
+			o.text = linkName;
+			/* или 
+				var o = new Option(linkName, links[linkName]); 
+			*/
+			try{
+				s.add(o, null);
+			}
+			catch(e){
+				s.add(o);
+			}
+			s.add(o);
+		}
+		// Сделаем все элементы формы доступными
+		var f = document.myForm; // или s.form
+		for (var i=0; i < f.elements.length; i++){
+			f.elements[i].disabled = false;// так как в html он скрыт
+		}
+		document.links[0].style.visibility="visible";// опять же в html он скрыт hidden
 	</script>
 </body>
 </html>
