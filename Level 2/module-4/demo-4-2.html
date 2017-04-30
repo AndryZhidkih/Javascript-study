@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>Отмена действия по умолчанию</title>
+<style type="text/css">
+html{background:#f0f0f0;cursor:default;}
+html, input, button{font:16px calibri, sans-serif;}
+form{float:left;padding:20px;border:5px solid #69c;background:#fff;}
+</style>
+<script type="text/javascript">
+/*
+	function test(e, p){
+		alert(p);
+		return false;
+	}
+	function f(e) {
+		document.forms.search.onsubmit = new Function("test(this, 'x')");	
+	}
+	window.onload = f;
+	*/
+	function foo(){
+		alert("Hello")
+		return false;// что бы не отправлять свойство
+	}
+</script>
+</head>
+<body>
+<form action="http://google.com" name="search" onsubmit="return foo()">
+	<input type="text" name="q" value="булочка">
+	<button type="submit">Отправить</button>
+</form>
+</body>
+</html>
